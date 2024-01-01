@@ -64,6 +64,23 @@ namespace PayScale.Website.Clients
             return results;
         }
 
-    
+
+        public async Task SubmitCalculatedTax(TaxCalculation taxCalculation)
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add(APIKeyConstants.ApiKeyHeaderName, _options.ApiKey);
+
+            var apiUrl = $"{_baseUri}{_options?.Endpoints?.PostCalculation}";
+
+            var response = await client.PostAsJsonAsync(apiUrl,taxCalculation);
+
+            var results = await response.Content.ReadAsStringAsync();
+        }
+
+
+
+
+
     }
 }

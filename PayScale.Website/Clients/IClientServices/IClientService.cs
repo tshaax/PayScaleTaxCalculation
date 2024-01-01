@@ -10,5 +10,7 @@ namespace PayScale.Website.Clients.IClientServices
 
         public Task<PostalCodeTaxType> CalculateTax(decimal amount, string postalCode);
 
+        public Task SubmitCalculatedTax(TaxCalculation taxCalculation);
+
     }
 }
