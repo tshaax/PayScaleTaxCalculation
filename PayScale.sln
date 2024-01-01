@@ -19,11 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayScale.API", "PayScale.Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayScale.Website", "PayScale.Website\PayScale.Website.csproj", "{47A87AEA-0A11-4F69-99C4-98440305DCD9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Constants", "Constants", "{01F15A3F-DEBF-430C-A7B2-84B75D3F1797}"
-	ProjectSection(SolutionItems) = preProject
-		PayScale.ReadAPI\Constants\APIKeyConstants.cs = PayScale.ReadAPI\Constants\APIKeyConstants.cs
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,7 +50,6 @@ Global
 		{A07E25D8-385A-4A02-91A1-3E7386101291} = {D19D7790-2375-4DD2-8855-3D341D3AF621}
 		{186B339A-62BB-4BD6-86E6-8FD659C3BE5C} = {A67AF4CB-B3F3-44AF-938D-2434197ED1DA}
 		{47A87AEA-0A11-4F69-99C4-98440305DCD9} = {23D0A952-DF3D-4F75-8CE5-ADA32CC8F9CB}
-		{01F15A3F-DEBF-430C-A7B2-84B75D3F1797} = {D19D7790-2375-4DD2-8855-3D341D3AF621}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B923AD3-9DFF-4539-887F-A9E3031D047D}

@@ -1,8 +1,6 @@
 ﻿using PayScale.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PayScale.WebRazor.Models;
+
 
 namespace PayScale.DataAcess.Data
 {

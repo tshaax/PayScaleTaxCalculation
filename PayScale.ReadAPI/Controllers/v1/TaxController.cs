@@ -1,14 +1,10 @@
 ﻿using Asp.Versioning;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Caching.Memory;
-using PayScale.DataAccess.Repository;
 using PayScale.DataAccess.Repository.IRepository;
 using PayScale.Models;
 using PayScale.Models.ViewModels;
-using PayScale.WebRazor.Models;
+
 
 namespace PayScale.Read.API.Controllers.v1
 {

@@ -1,4 +1,6 @@
 using Microsoft.Extensions.Configuration;
+using PayScale.Website.Clients;
+using PayScale.Website.Clients.IClientServices;
 using PayScale.Website.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient();
-builder.Services.Configure<ClientOptions>(builder.Configuration.GetSection(nameof(ClientOptions)));
+builder.Services.Configure<ClientOptions>(builder.Configuration.GetSection(nameof(ClientOptions.PayScaleAPI)));
+
+builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 
