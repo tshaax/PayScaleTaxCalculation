@@ -1,0 +1,36 @@
+﻿@page
+@model PayScale.WebRazor.Pages.CalculateTaxes.CreateModel
+<form method="post">
+
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Category</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="ModelOnly"></div>*@
+        <div class="mb-3 row p-1">
+            <label asp-for="TaxCalculation.Amount" class="p-0"></label>
+            <input asp-for="TaxCalculation.Amount" class="form-control" />
+            <span asp-validation-for="TaxCalculation.Amount" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="TaxCalculation.PostalCodeId" class="p-0"></label>
+            <select asp-for="TaxCalculation.PostalCodeId" asp-items="Model.Options" class="form-control"></select>
+            <span asp-validation-for="TaxCalculation.PostalCodes" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Calculate Tax</button>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

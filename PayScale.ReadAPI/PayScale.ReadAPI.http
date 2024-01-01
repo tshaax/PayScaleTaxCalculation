@@ -1,0 +1,6 @@
+@PayScale.ReadAPI_HostAddress = http://localhost:5012
+
+GET {{PayScale.ReadAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

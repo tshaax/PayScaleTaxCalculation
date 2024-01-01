@@ -1,10 +1,4 @@
-﻿using PayScale.DataAccess.Repository.IRepository;
-using PayScale.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PayScale.Models;
 
 namespace PayScale.DataAccess.Repository.IRepository
 {
