@@ -147,29 +147,8 @@ namespace PayScale.API.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult CalculateTax(decimal amount, string postalCode)
         {
-            decimal? amountTaxRate = 0.0M;
-
-            var rates = _unitOfWork.TaxRate.GetAll(includeProperties: "TaxType");
-
-            var taxType = _unitOfWork.PostalCodeTaxType
-                .Get(filter: w => w.PostalCode!.Code.Equals(postalCode), includeProperties: "PostalCode,TaxType");
-
-            var rate = rates.FirstOrDefault(w => w.TaxTypeId == taxType.TaxTypeId 
-            && amount  >= w.From && amount <=  w.To);
-                       
-            amountTaxRate  = rate?.Rate?? 0.0m;
-
-            var taxedAmount = amount * amountTaxRate;
-            var amountAfterTax = amount - taxedAmount;
-
-            var results = new TaxCalculationViewModel
-            {
-                TaxType = taxType?.TaxType?.TaxCalculationType,
-                AmountAfterTax = amountAfterTax?? 0.0M,
-                TaxPercentage = $"{amountTaxRate * 100}%",
-            };
-
-            return Ok(results);
+            var response = _businessLogic.TaxCalculationLogic(amount, postalCode);
+            return Ok(response);
         }
 
         /// <summary>
@@ -187,12 +166,20 @@ namespace PayScale.API.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult SaveCalculation(TaxCalculation calculation) 
         {
+          
+           
+            var calcTaxAmount = _businessLogic.TaxCalculationLogic(calculation.Amount, calculation.PostalCodeId);
+
+            calculation.AmountAfterTax = calcTaxAmount.AmountAfterTax;
+
             _unitOfWork.TaxCalculation.Add(calculation);
             _unitOfWork.Save();
 
             var routeValues = new { id = calculation.Id };
 
             var response = _businessLogic.TaxCalculationLogic(routeValues.id);
+
+            
 
             return CreatedAtAction(nameof(TaxCalculationById),routeValues, response);
         }
