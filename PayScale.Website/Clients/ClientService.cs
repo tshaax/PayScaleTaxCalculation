@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PayScale.Models;
 using PayScale.Models.Constants;
+using PayScale.Models.ViewModels;
 using PayScale.Website.Clients.IClientServices;
 using PayScale.Website.Models;
 
@@ -75,12 +76,17 @@ namespace PayScale.Website.Clients
 
             var response = await client.PostAsJsonAsync(apiUrl,taxCalculation);
 
-            var results = await response.Content.ReadAsStringAsync();
+            var strResponse = await response.Content.ReadAsStringAsync();
+
+            var results = JsonConvert.
+                DeserializeObject<TaxCalculationViewModel>(await response.Content.ReadAsStringAsync());
+
+
         }
 
 
 
 
-
+         
     }
 }

@@ -22,7 +22,7 @@ namespace PayScale.Website.Controllers
         public async Task<IActionResult> Index()
         {
             var postalCodes =  await _clientService.GetPostalCodes();
-            ViewBag.PostalCodes = new SelectList(postalCodes, "PostalCodeId", "PostalCode.Code");
+            ViewBag.PostalCodes = new SelectList(postalCodes, "PostalCode.Id", "PostalCode.Code");
             return View();
         }
 

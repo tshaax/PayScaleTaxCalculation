@@ -22,6 +22,6 @@ namespace PayScale.Models
         [ForeignKey("PostalCodeId")]
         [ValidateNever]
         [JsonIgnore]
-        public required List<PostalCode> PostalCodes { get; set; }
+        public  List<PostalCode>? PostalCodes { get; set; }
     }
 }

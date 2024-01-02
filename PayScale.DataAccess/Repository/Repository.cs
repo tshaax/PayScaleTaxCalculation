@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 using PayScale.DataAccess.Repository.IRepository;
 using PayScale.DataAcess.Data;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace PayScale.DataAccess.Repository
 {
@@ -19,9 +13,6 @@ namespace PayScale.DataAccess.Repository
         {
             _db = db;
             this.dbSet = _db.Set<T>();
-            //_db.Categories == dbSet
-            //_db.PostalCodeTaxType.Include(u => u.PostalCode).Include(u => u.CategoryId);
-            
         }
 
         public void Add(T entity)
