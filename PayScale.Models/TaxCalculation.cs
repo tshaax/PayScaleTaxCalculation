@@ -13,9 +13,8 @@ namespace PayScale.Models
         [JsonIgnore]
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
         [Display(Name = "Salary")]
-        [RegularExpression(@"^\d+$")]
         [Required(ErrorMessage = "{0} is required")]
-        public decimal Amount { get; set; }
+        public decimal Amount { get; set; } = 0.0M;
         [Required]
         public decimal AmountAfterTax { get; set; }
         [Required]

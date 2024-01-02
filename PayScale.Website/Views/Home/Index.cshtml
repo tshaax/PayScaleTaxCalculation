@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Amount, new {Type = "number", htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Amount, new { onkeydown = "return ValidateNumber(event)",  @class = "form-control"  })
                 @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
             </div>  
         </div>
@@ -48,3 +48,14 @@
 @Html.Partial("_Calculation")
   
 
+<script type="text/javascript">
+    function ValidateNumber(e) {
+        var evt = (e) ? e : window.event;
+        var charCode = (evt.keyCode) ? evt.keyCode : evt.which;
+        if (charCode > 31 && (charCode < 48 || (charCode > 57  && charCode != 188))) {
+            return false;
+        }
+        return true;
+    }
+
+</script>
