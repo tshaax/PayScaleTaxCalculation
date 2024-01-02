@@ -29,9 +29,15 @@ namespace PayScale.Website.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(TaxCalculation taxCalculation)
         {
-            await _clientService.SubmitCalculatedTax(taxCalculation);
+            if(!ModelState.IsValid)
+            {
+                return View(taxCalculation);
+
+            }
+
+           var res =  await _clientService.SubmitCalculatedTax(taxCalculation);
   
-            return RedirectToAction("Index");
+            return PartialView("_Calculation", res);
         }
 
 
@@ -40,10 +46,6 @@ namespace PayScale.Website.Controllers
             return View();
         }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+
     }
 }

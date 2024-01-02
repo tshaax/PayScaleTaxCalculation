@@ -1,0 +1,31 @@
+﻿@using PayScale.Models.ViewModels
+@model TaxCalculationViewModel
+
+@{
+    ViewBag.Title = "PayScale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model is not null)
+{ 
+    <br/>
+    <h3>Tax Results</h3>
+    <table>
+        <tr>
+            <td>
+                Amount After Tax :
+            </td>
+            <td>
+                @Model.AmountAfterTax.ToString()
+            </td>
+        </tr>
+        <tr>
+            <td>Tax Type :</td>
+            <td>@Model.TaxType</td>
+        </tr>
+        <tr>
+            <td>Percentage :</td>
+            <td>@Model.TaxPercentage</td>
+        </tr>
+    </table>
+    @Html.ActionLink("<<Back To Home","Index")
+}

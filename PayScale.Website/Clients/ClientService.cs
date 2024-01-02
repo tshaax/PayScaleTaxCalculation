@@ -66,7 +66,7 @@ namespace PayScale.Website.Clients
         }
 
 
-        public async Task SubmitCalculatedTax(TaxCalculation taxCalculation)
+        public async Task<TaxCalculationViewModel> SubmitCalculatedTax(TaxCalculation taxCalculation)
         {
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Clear();
@@ -76,12 +76,10 @@ namespace PayScale.Website.Clients
 
             var response = await client.PostAsJsonAsync(apiUrl,taxCalculation);
 
-            var strResponse = await response.Content.ReadAsStringAsync();
-
             var results = JsonConvert.
                 DeserializeObject<TaxCalculationViewModel>(await response.Content.ReadAsStringAsync());
 
-
+            return results;
         }
 
 

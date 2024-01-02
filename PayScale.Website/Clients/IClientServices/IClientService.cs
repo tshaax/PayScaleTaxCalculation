@@ -1,4 +1,5 @@
 ﻿using PayScale.Models;
+using PayScale.Models.ViewModels;
 
 namespace PayScale.Website.Clients.IClientServices
 {
@@ -10,7 +11,7 @@ namespace PayScale.Website.Clients.IClientServices
 
         public Task<PostalCodeTaxType> CalculateTax(decimal amount, string postalCode);
 
-        public Task SubmitCalculatedTax(TaxCalculation taxCalculation);
+        public Task<TaxCalculationViewModel> SubmitCalculatedTax(TaxCalculation taxCalculation);
 
     }
 }
