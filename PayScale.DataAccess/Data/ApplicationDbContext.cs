@@ -19,9 +19,9 @@ namespace PayScale.DataAcess.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-			base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
-			modelBuilder.Entity<TaxType>().HasData(
+            modelBuilder.Entity<TaxType>().HasData(
                 new TaxType { Id = 1, TaxCalculationType = "Progressive" },
                 new TaxType { Id = 2, TaxCalculationType = "Flat Value" },
                 new TaxType { Id = 3, TaxCalculationType = "Flat Rate" });
@@ -29,9 +29,9 @@ namespace PayScale.DataAcess.Data
             modelBuilder.Entity<PostalCode>().HasData(
                 new PostalCode { Id = 1, Code = "7441" },
                 new PostalCode { Id = 2, Code = "A100" },
-                new PostalCode { Id = 3, Code = "7000"},
-                new PostalCode { Id  = 4, Code = "1000"});
-            
+                new PostalCode { Id = 3, Code = "7000" },
+                new PostalCode { Id = 4, Code = "1000" });
+
 
             modelBuilder.Entity<PostalCodeTaxType>().HasData(
                 new PostalCodeTaxType { Id = 1, PostalCodeId = 1, TaxTypeId = 1 },

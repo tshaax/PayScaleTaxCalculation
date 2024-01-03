@@ -2,21 +2,17 @@
 using PayScale.DataAccess.Repository.IRepository;
 using PayScale.DataAccess.Repository;
 using PayScale.DataAcess.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace PayScale.DataAccess
 {
     public static class DataAccessServiceConfiguration
     {
-        public static void AddDataAcessServices(this IServiceCollection services)
+        public static void AddDataAcessServices(this IServiceCollection services, string? sqlConnection )
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-             options.UseInMemoryDatabase("PayScaleDb"));
+             options.UseSqlServer(sqlConnection));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }   

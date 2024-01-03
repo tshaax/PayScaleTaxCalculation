@@ -1,9 +1,5 @@
 using Asp.Versioning;
-using Microsoft.EntityFrameworkCore;
-using PayScale.DataAccess.Repository.IRepository;
-using PayScale.DataAccess.Repository;
 using PayScale.DataAcess.Data;
-using PayScale.DataAccess.DbInitializer;
 using PayScale.API.Extensions.IApiKeyValidations;
 using PayScale.API.Extensions;
 using PayScale.API.Extensions.CustomExceptionMiddleware;
@@ -67,8 +63,10 @@ builder.Services.AddAuthentication();
 builder.Services.AddTransient<IApiKeyValidation, ApiKeyValidation>();
 builder.Services.AddMemoryCache();
 
-builder.Services.AddDataAcessServices();
+var conStr = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDataAcessServices(conStr);
 builder.Services.AddBusinessLayerServices();
+
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
@@ -80,9 +78,10 @@ using (var scopes = app.Services.CreateScope())
 {
     var services = scopes.ServiceProvider;
     var context = services.GetRequiredService<ApplicationDbContext>();
-
-    DataGenerator.Initialize(services);
+    context.Database.EnsureCreated();
+   
 }
+
 app.UseExceptionHandler();
 
 

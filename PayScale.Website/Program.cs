@@ -20,7 +20,7 @@ var app = builder.Build();
 
 app.UseExceptionHandler("/Home/Error");
 app.UseHsts();
-app.UseStatusCodePages(Text.Plain, "Ooopps!! Something went wrong with your input, please try again. Error code: {0}");
+app.UseStatusCodePages(Text.Plain, "Ooopps!! Something went wrong, please try again. Error code: {0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
