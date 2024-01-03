@@ -180,8 +180,6 @@ namespace PayScale.API.Controllers.v1
 
             var response = _businessLogic.TaxCalculationLogic(routeValues.id);
 
-            
-
             return CreatedAtAction(nameof(TaxCalculationById),routeValues, response);
         }
 
@@ -217,22 +215,6 @@ namespace PayScale.API.Controllers.v1
 
 
             return Ok(data);
-        }
-
-        private TaxCalculationViewModel TaxCalculationLogic(int id)
-        {
-            TaxCalculationViewModel? data;
-            var taxCalc = _unitOfWork.TaxCalculation.Get(filter: w => w.Id.Equals(id));
-
-            var taxType = _unitOfWork.PostalCodeTaxType.Get(filter: w => w.PostalCode!.Id.Equals(taxCalc.PostalCodeId), includeProperties: "PostalCode,TaxType");
-            var rates = _unitOfWork.TaxRate.Get(filter: w => w.TaxTypeId.Equals(taxType.Id), includeProperties: "TaxType");
-            data = new TaxCalculationViewModel
-            {
-                AmountAfterTax = taxCalc.AmountAfterTax,
-                TaxPercentage = $"{rates.Rate * 100}%",
-                TaxType = rates?.TaxType?.TaxCalculationType,
-            };
-            return data;
         }
     }
 }
