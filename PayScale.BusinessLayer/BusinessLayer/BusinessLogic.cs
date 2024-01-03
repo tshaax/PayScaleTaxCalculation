@@ -51,7 +51,7 @@ namespace PayScale.BusinessLayer.BusinessLayer
             {
                 AmountAfterTax = taxCalc.AmountAfterTax,
                 TaxPercentage = $"{rates.Rate * 100}%",
-                TaxType = rates.TaxType.TaxCalculationType,
+                TaxType = rates?.TaxType?.TaxCalculationType,
             };
             return data;
         }

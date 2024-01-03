@@ -24,6 +24,7 @@ namespace PayScale.API.Controllers.v1
         /// 
         /// </summary>
         /// <param name="unitOfWork"></param>
+        /// <param name="businessLogic"></param>
         /// <param name="cache"></param>
         public TaxController(IUnitOfWork unitOfWork, IBusinessLogic businessLogic, IMemoryCache cache)
         {
@@ -229,7 +230,7 @@ namespace PayScale.API.Controllers.v1
             {
                 AmountAfterTax = taxCalc.AmountAfterTax,
                 TaxPercentage = $"{rates.Rate * 100}%",
-                TaxType = rates.TaxType.TaxCalculationType,
+                TaxType = rates?.TaxType?.TaxCalculationType,
             };
             return data;
         }
